@@ -65,7 +65,7 @@ export function DownloadTable({
           title='Clear all'
           className='flex items-center justify-center gap-1 rounded-lg border border-red-500/30 bg-red-500/15 px-2 py-1 text-red-400 transition-colors hover:bg-red-500/25'
         >
-          <p>Clear</p>
+          <p className='text-sm'>Clear</p>
           <HugeiconsIcon icon={Delete01Icon} size={16} />
         </button>
       </div>
