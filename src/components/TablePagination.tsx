@@ -47,7 +47,7 @@ export function TablePagination({
           <DropdownMenuContent align='start' className='w-40 border border-white/10 bg-[#0d0f1a]/90 backdrop-blur-xl'>
             <DropdownMenuLabel className='text-xs text-white/40'>Rows per page</DropdownMenuLabel>
             <DropdownMenuSeparator className='bg-white/10' />
-            {[25, 50, 100, 200].map((value) => (
+            {[5, 15, 25, 50].map((value) => (
               <DropdownMenuItem
                 key={value}
                 onClick={() => handleRowsChange(value)}
