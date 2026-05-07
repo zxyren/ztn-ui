@@ -5,7 +5,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { ProgressBar } from './Progressbar';
 import { useState, useEffect, useRef } from 'react';
 import { getPlatformIcon } from './PlatformIcon';
-import { ImageNotFound01Icon, Cancel01Icon, Download01Icon, ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
+import { ImageNotFound01Icon, Cancel01Icon, Download01Icon } from '@hugeicons/core-free-icons';
 
 interface TableRowProps {
   item: DownloadItem;
