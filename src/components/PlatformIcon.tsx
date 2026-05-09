@@ -26,6 +26,8 @@ export const getPlatformIcon = (url: string): PlatformIcon => {
     if (host.includes('dribbble.com')) return { type: 'iconza', name: 'Dribbble' };
     if (host === 'dai.ly' || host.includes('dailymotion.com')) return { type: 'iconza', name: 'Dailymotion Light' };
     if (host.includes('500px.com')) return { type: 'iconza', name: '500px Light' };
+    if (host.includes('bsky.app')) return { type: 'iconza', name: 'Bluesky' };
+    if (host.includes('rutube.ru')) return { type: 'iconza', name: 'Rutube' };
   } catch (e) {}
   return { type: 'hugeicons', icon: Unlink04Icon };
 };

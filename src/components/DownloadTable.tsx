@@ -1,7 +1,7 @@
 import { TableRow } from './TableRow';
 import { TablePagination } from './TablePagination';
 import type { DownloadItem } from './App';
-import { Delete01Icon } from '@hugeicons/core-free-icons';
+import { Delete02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
 interface DownloadTableProps {
@@ -66,7 +66,7 @@ export function DownloadTable({
           className='flex items-center justify-center gap-1 rounded-lg border border-red-500/30 bg-red-500/15 px-2 py-1 text-red-400 transition-colors hover:bg-red-500/25'
         >
           <p className='text-sm'>Clear</p>
-          <HugeiconsIcon icon={Delete01Icon} size={16} />
+          <HugeiconsIcon icon={Delete02Icon} size={16} />
         </button>
       </div>
 

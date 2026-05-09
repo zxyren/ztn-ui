@@ -23,6 +23,7 @@ const supportedPlatforms = [
   { name: 'Behance', icon: 'BehanceFill' },
   { name: 'Dribbble', icon: 'Dribbble' },
   { name: '500px', icon: '500px Light' },
+  { name: 'Bluesky', icon: 'Bluesky' },
 ];
 
 export function PageHeader() {
