@@ -1,6 +1,7 @@
 import { type RefObject } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IconBrandYoutube, IconClipboardPlus, IconFolder, IconMusic, IconPhoto, IconTrash, IconUpload } from '@tabler/icons-react';
+import { Button } from '../ui/button';
 
 interface DownloadControlsProps {
   videoLink: string;
@@ -13,7 +14,7 @@ interface DownloadControlsProps {
 }
 
 const inputBase =
-  'w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none transition-all focus:border-indigo-500/60 focus:bg-white/8 backdrop-blur-sm';
+  'w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder-white/20 outline-none transition-all focus:border-indigo-500/60 focus:bg-white/8 backdrop-blur-sm';
 
 export function DownloadControls({
   videoLink,
@@ -69,20 +70,21 @@ export function DownloadControls({
         <div className='flex flex-col gap-2 sm:flex-row sm:gap-3'>
           <div className='relative flex-1'>
             <input
-              className={`h-11 min-w-0 pr-24 sm:h-12 sm:pr-28 ${inputBase}`}
+              className={`h-11 min-w-0 pr-24 sm:h-14 sm:pr-28 ${inputBase}`}
               type='text'
               placeholder='Paste video, audio, or image URL…'
               value={videoLink}
               onChange={(e) => setVideoLink(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && queueSingle('video')}
             />
-            <button
+            <Button
+              variant='secondary'
               onClick={handlePaste}
-              className='bg-indigo-400/10 hover:bg-indigo-400/5 absolute right-1.5 top-1/2 flex h-8 -translate-y-1/2 items-center gap-1.5 rounded-xl border border-indigo-400/15 px-2.5 text-xs text-indigo-400 transition-all hover:border-indigo-400/25 hover:text-indigo-500 sm:h-9 sm:px-3 sm:text-base'
+              className='absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1 px-2.5 sm:h-10 sm:px-3 sm:text-base'
             >
-              <IconClipboardPlus size={15} />
+              <IconClipboardPlus size={20} stroke={1.5} />
               <span>Paste</span>
-            </button>
+            </Button>
           </div>
 
           {/* Format buttons */}
