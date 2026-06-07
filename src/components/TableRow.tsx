@@ -99,9 +99,9 @@ export function TableRow({ item, onCancel }: TableRowProps) {
         : '';
 
   return (
-    <div className='bg-white/4 hover:bg-white/8 group relative flex items-start gap-2 rounded-xl border border-white/20 p-2 backdrop-blur-sm transition-all hover:border-indigo-500 sm:gap-3 sm:rounded-2xl sm:p-3 md:items-center'>
+    <div className='group relative flex items-start border-b border-white/20 p-2 gap-4 sm:p-3 md:items-center'>
       {/* Thumbnail */}
-      <div className='relative h-16 w-24 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
+      <div className='relative h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
         {thumbLoading ? (
           <div className='flex h-full w-full items-center justify-center'>
             <div className='h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-indigo-400 sm:h-8 sm:w-8' />

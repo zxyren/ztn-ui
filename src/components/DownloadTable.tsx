@@ -62,10 +62,10 @@ export function DownloadTable({
         <button
           onClick={clearDownloads}
           title='Clear all'
-          className='flex items-center justify-center gap-1 rounded-lg border border-red-500/30 bg-red-500/15 px-2 py-1 text-red-400 transition-colors hover:bg-red-500/25'
+          className='flex items-center justify-center gap-1 rounded-xl border border-red-500/30 bg-red-500/15 px-4 py-1.5 active:scale-95 duration-200 transition-transform text-red-400 hover:bg-red-500/25'
         >
-          <p className='text-sm'>Clear</p>
-          <IconTrash size={16} />
+          <p className='text-base font-medium'>Clear</p>
+          <IconTrash size={20} stroke={1.5} />
         </button>
       </div>
 
@@ -76,7 +76,7 @@ export function DownloadTable({
           <p className='text-white/25'>Paste a URL above to start</p>
         </div>
       ) : (
-        <div className='space-y-2'>
+        <div>
           {paginated.map((item, i) => (
             <TableRow key={item.id} item={item} index={i} onCancel={cancelDownload} />
           ))}

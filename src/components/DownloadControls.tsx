@@ -80,7 +80,7 @@ export function DownloadControls({
             <Button
               variant='secondary'
               onClick={handlePaste}
-              className='absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1 px-2.5 sm:h-10 sm:px-3 sm:text-base'
+              className='absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-1 px-2.5 sm:h-10 sm:px-3 sm:text-base active:scale-95 duration-200 transition-transform'
             >
               <IconClipboardPlus size={20} stroke={1.5} />
               <span>Paste</span>
