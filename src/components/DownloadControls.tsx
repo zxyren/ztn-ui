@@ -103,7 +103,7 @@ export function DownloadControls({
               <button
                 key={fmt}
                 onClick={() => queueSingle(fmt)}
-                className={`flex h-10 flex-1 items-center justify-center gap-1.5 border px-3 text-sm font-semibold transition-all sm:h-12 sm:px-5 sm:text-sm ${cls}`}
+                className={`flex h-10 flex-1 items-center cursor-pointer justify-center gap-1.5 border px-3 text-sm font-semibold transition-all sm:h-12 sm:px-5 sm:text-sm ${cls}`}
               >
                 <Icon size={20} className='sm:size-6' stroke={1.5} />
                 <span>{label}</span>

@@ -8,25 +8,25 @@ export function StatusBadge({ status }: StatusBadgeProps) {
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
       case 'queued':
-        return { bg: 'bg-cyan-500/15', text: 'text-cyan-400', border: 'border-cyan-500/30', icon: IconHourglassEmpty };
+        return { cls: 'status-queued', icon: IconHourglassEmpty };
       case 'starting':
-        return { bg: 'bg-teal-500/15', text: 'text-teal-400', border: 'border-teal-500/30', icon: IconRocket };
+        return { cls: 'status-starting', icon: IconRocket };
       case 'downloading':
-        return { bg: 'bg-indigo-500/15', text: 'text-indigo-400', border: 'border-indigo-500/30', icon: IconLoader2 };
+        return { cls: 'status-downloading', icon: IconLoader2 };
       case 'merging':
-        return { bg: 'bg-purple-500/15', text: 'text-purple-400', border: 'border-purple-500/30', icon: IconLayersIntersect2 };
+        return { cls: 'status-merging', icon: IconLayersIntersect2 };
       case 'completed':
-        return { bg: 'bg-emerald-500/15', text: 'text-emerald-400', border: 'border-emerald-500/30', icon: IconCheck };
+        return { cls: 'status-completed', icon: IconCheck };
       case 'converting':
-        return { bg: 'bg-blue-500/15', text: 'text-blue-400', border: 'border-blue-500/30', icon: IconTransform };
+        return { cls: 'status-converting', icon: IconTransform };
       case 'error':
-        return { bg: 'bg-amber-500/15', text: 'text-amber-400', border: 'border-amber-500/30', icon: IconBug };
+        return { cls: 'status-error', icon: IconBug };
       case 'cancelled':
-        return { bg: 'bg-slate-500/15', text: 'text-slate-400', border: 'border-slate-500/30', icon: IconPlayerPlayFilled };
+        return { cls: 'status-cancelled', icon: IconPlayerPlayFilled };
       case 'cancelling':
-        return { bg: 'bg-slate-500/15', text: 'text-slate-400', border: 'border-slate-500/30', icon: IconPlayerPauseFilled };
+        return { cls: 'status-cancelling', icon: IconPlayerPauseFilled };
       default:
-        return { bg: 'bg-white/8', text: 'text-white/40', border: 'border-white/10', icon: IconAlertTriangle };
+        return { cls: 'status-default', icon: IconAlertTriangle };
     }
   };
 
@@ -38,7 +38,7 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center gap-0.5 rounded-full border px-2 py-1 text-xs font-medium sm:gap-1 sm:px-3 sm:py-1.5 ${style.bg} ${style.text} ${style.border}`}
+      className={`inline-flex items-center gap-0.5 rounded-full border px-2 py-1 text-xs font-medium sm:gap-1 sm:px-3 sm:py-1.5 ${style.cls} ${style.cls} ${style.cls}`}
     >
       {isAnimating ? <Icon size={14} className={`animate-spin sm:size-4`} /> : <Icon size={14} className='sm:size-4' />}
       {status}

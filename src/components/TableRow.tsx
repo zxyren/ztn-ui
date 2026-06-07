@@ -130,7 +130,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
             target='_blank'
             rel='noopener noreferrer'
             title={title || undefined}
-            className='line-clamp-2 block min-w-[100px] flex-1 text-xs font-semibold text-white/75 hover:text-indigo-400 hover:underline sm:text-sm'
+            className='line-clamp-2 block min-w-24 flex-1 text-xs font-semibold text-white/75 hover:text-indigo-400 hover:underline sm:text-sm'
           >
             {title || item.url}
           </a>
