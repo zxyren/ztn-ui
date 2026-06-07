@@ -54,7 +54,7 @@ export function DownloadControls({
       fmt: 'video' as const,
       icon: IconBrandYoutube,
       label: 'MP4',
-      cls: 'rounded-l-xl rounded-r-none border-r-0 border-rose-400/40 bg-rose-500/20 hover:bg-rose-400/30 text-rose-400',
+      cls: 'rounded-l-xl rounded-r-none border-r-0 border-lime-400/40 bg-lime-500/20 hover:bg-lime-400/30 text-lime-400',
     },
     {
       fmt: 'audio' as const,
@@ -103,9 +103,9 @@ export function DownloadControls({
               <button
                 key={fmt}
                 onClick={() => queueSingle(fmt)}
-                className={`flex h-10 flex-1 items-center justify-center gap-1.5 border px-3 text-xs font-semibold transition-all sm:h-12 sm:px-5 sm:text-sm ${cls}`}
+                className={`flex h-10 flex-1 items-center justify-center gap-1.5 border px-3 text-sm font-semibold transition-all sm:h-12 sm:px-5 sm:text-sm ${cls}`}
               >
-                <Icon size={16} className='sm:size-5' />
+                <Icon size={20} className='sm:size-6' stroke={1.5} />
                 <span>{label}</span>
               </button>
             ))}
