@@ -107,12 +107,12 @@ export function DownloadTable({
         </div>
       </div>
       <div className='flex flex-col gap-3 rounded-3xl border border-white/10 bg-slate-950/40 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between'>
-        <p className='text-sm text-slate-400'>
+        <p className='text-slate-400'>
           {filteredQueue.length > 0 ? `${filteredQueue.length} ${statusLabel} in queue` : 'Queue is empty'}
         </p>
         <Button
           onClick={clearDownloads}
-          variant='destructive'
+          variant='outline'
         >
           <IconTrash size={18} stroke={1.5} />
           Clear

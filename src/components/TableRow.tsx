@@ -101,7 +101,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
   return (
     <div className='group relative flex items-start border-b border-white/20 p-2 gap-4 sm:p-3 md:items-center'>
       {/* Thumbnail */}
-      <div className='relative h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
+      <div className='relative aspect-video h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
         {thumbLoading ? (
           <div className='flex h-full w-full items-center justify-center'>
             <div className='h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-indigo-400 sm:h-8 sm:w-8' />
@@ -124,7 +124,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
 
       {/* Content */}
       <div className='min-w-0 flex-1'>
-        <div className='mb-1 flex flex-wrap items-start gap-1 sm:mb-1.5 sm:gap-2'>
+        <div className='mb-2 flex flex-wrap items-start gap-1 sm:mb-3 sm:gap-2'>
           <a
             href={item.url}
             target='_blank'

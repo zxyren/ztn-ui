@@ -137,8 +137,8 @@ export function DownloadControls({
                     exit={{ opacity: 0, y: -4 }}
                     className='flex min-w-0 items-center truncate'
                   >
-                    <IconFolderFilled size={16} className='mr-1.5 shrink-0 text-indigo-400 sm:size-5' />
-                    <span className='truncate font-semibold text-white'>{selectedDirectory.name}</span>
+                    <IconFolderFilled size={16} className='mr-1.5 text-indigo-400 sm:size-6' />
+                    <span className='truncate text-white'>{selectedDirectory.name}</span>
                   </motion.span>
                 ) : (
                   <motion.span
@@ -148,8 +148,8 @@ export function DownloadControls({
                     exit={{ opacity: 0 }}
                     className='flex items-center gap-1.5 font-medium'
                   >
-                    <IconFolder size={16} className='sm:size-5' />
-                    <h1 className='text-sm font-medium text-white/60 sm:text-base'>
+                    <IconFolder size={16} className='sm:size-6' />
+                    <h1 className='text-sm text-white/60 sm:text-base'>
                       <span className='hidden sm:inline'>Choose</span> Folder
                     </h1>
                   </motion.span>
@@ -160,7 +160,7 @@ export function DownloadControls({
             <AnimatePresence>
               {selectedDirectory && (
                 <Button
-                  variant='destructive'
+                  variant='outline'
                   onClick={() => setSelectedDirectory(null)}
                 >
                   <IconTrash size={16} className='sm:size-5' />
