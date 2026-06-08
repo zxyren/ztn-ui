@@ -1,6 +1,6 @@
-import { IconLinkOff } from "@tabler/icons-react";
+import { IconUnlink } from "@tabler/icons-react";
 
-type PlatformIcon = { type: 'iconza'; name: string } | { type: 'tabler'; icon: typeof IconLinkOff };
+type PlatformIcon = { type: 'iconza'; name: string } | { type: 'tabler'; icon: typeof IconUnlink };
 
 export const getPlatformIcon = (url: string): PlatformIcon => {
   try {
@@ -29,5 +29,5 @@ export const getPlatformIcon = (url: string): PlatformIcon => {
     if (host.includes('bsky.app')) return { type: 'iconza', name: 'Bluesky' };
     if (host.includes('rutube.ru')) return { type: 'iconza', name: 'Rutube' };
   } catch (e) { }
-  return { type: 'tabler', icon: IconLinkOff };
+  return { type: 'tabler', icon: IconUnlink };
 };
