@@ -4,27 +4,41 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer rounded-xl text-sm font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 border',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer rounded-xl text-sm font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-45 border',
   {
     variants: {
       variant: {
-        default: 'bg-primary/20 text-primary-foreground border-primary/40 backdrop-blur-sm hover:bg-primary/30 hover:border-primary/60',
-        destructive: 'bg-destructive/10 text-destructive-foreground border-2 border-destructive/40 backdrop-blur-sm hover:bg-destructive/30 hover:border-destructive/60',
-        outline: 'border-surface/50 bg-transparent hover:bg-surface/5 hover:border-surface/60',
+        default:
+          'bg-primary/15 text-primary border-primary/35 hover:bg-primary/25 hover:border-primary/55',
+
+        destructive:
+          'bg-gradient-to-br from-red-950 to-red-900 text-red-300 border-red-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_1px_3px_rgba(0,0,0,0.4)] hover:from-red-900 hover:to-red-800 hover:text-red-200 hover:border-red-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_2px_8px_rgba(185,28,28,0.35)] active:translate-y-px',
+
+        outline:
+          'border-border/50 bg-transparent text-secondary-foreground hover:bg-surface/5 hover:border-border hover:text-foreground',
+
         secondary:
-          'bg-surface/5 text-secondary-foreground border border-surface/50 backdrop-blur-sm hover:bg-surface/10 hover:border-surface/60',
-        ghost: 'border-transparent text-zinc-700 hover:bg-zinc-100',
-        todo: 'bg-purple-500/20 text-purple-300 border-purple-500/40 backdrop-blur-sm hover:bg-purple-500/30 hover:border-purple-500/60',
+          'bg-surface/5 text-secondary-foreground border-surface/30 hover:bg-surface/10 hover:border-surface/50',
+
+        ghost:
+          'border-transparent text-secondary-foreground hover:bg-surface/8 hover:text-foreground',
+
+        todo:
+          'bg-violet-500/12 text-violet-400 border-violet-500/30 hover:bg-violet-500/22 hover:border-violet-500/50',
+
         'in-review':
-          'bg-yellow-500/20 text-yellow-300 border-yellow-500/40 backdrop-blur-sm hover:bg-yellow-500/30 hover:border-yellow-500/60',
+          'bg-amber-500/10 text-amber-400 border-amber-500/28 hover:bg-amber-500/20 hover:border-amber-500/46',
+
         'design-review':
-          'bg-violet-500/20 text-violet-300 border-violet-500/40 backdrop-blur-sm hover:bg-violet-500/30 hover:border-violet-500/60',
-        'on-hold': 'border-2 border-zinc-900 bg-yellow-500 text-white hover:bg-yellow-600',
+          'bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/26 hover:bg-fuchsia-500/20 hover:border-fuchsia-500/44',
+
+        'on-hold':
+          'bg-gradient-to-br from-amber-900 to-amber-800 text-amber-100 border-amber-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_1px_3px_rgba(0,0,0,0.35)] hover:from-amber-800 hover:to-amber-700 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_2px_8px_rgba(180,83,9,0.4)]',
       },
       size: {
         default: 'min-h-9 px-5 py-2',
-        sm: 'min-h-8 px-4 py-1.5 text-xs',
-        lg: 'min-h-11 px-6 py-2.5 text-base',
+        sm: 'min-h-8 px-4 py-1.5 text-xs rounded-lg',
+        lg: 'min-h-11 px-6 py-2.5 text-base rounded-xl',
         icon: 'h-9 w-9',
       },
     },
