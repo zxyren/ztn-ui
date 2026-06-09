@@ -21,7 +21,9 @@
     <meta name="twitter:image" content="https://dlnexus.web.app/og-image.png" />
 
     <script>
-      window.location.href = 'https://dlnexus.web.app' + window.location.pathname + window.location.search;
+      if (window.location.hostname === 'ztn.pages.dev') {
+        window.location.href = 'https://dlnexus.web.app' + window.location.pathname + window.location.search;
+      }
     </script>
   </head>
   <body>
