@@ -4,7 +4,7 @@ import { StatusBadge } from './StatusBadge';
 import { ProgressBar } from './Progressbar';
 import { useState, useEffect, useRef } from 'react';
 import { getPlatformIcon } from './PlatformIcon';
-import { IconArrowBarToDown, IconPhotoX, IconX } from '@tabler/icons-react';
+import { IconArrowBarToDown, IconPhotoX, IconX, IconTrash } from '@tabler/icons-react';
 
 interface TableRowProps {
   item: DownloadItem;
@@ -25,6 +25,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
   const [thumbError, setThumbError] = useState(false);
   const [cancelling, setCancelling] = useState(false);
   const [downloading, setDownloading] = useState(false);
+  const [removing, setRemoving] = useState(false);
   const fetched = useRef(new Set<string>());
 
   useEffect(() => {
@@ -61,6 +62,16 @@ export function TableRow({ item, onCancel }: TableRowProps) {
       else setCancelling(false);
     } catch {
       setCancelling(false);
+    }
+  };
+
+  const handleRemove = async () => {
+    setRemoving(true);
+    try {
+      const res = await apiFetch(`/api/remove/${item.id}`, { method: 'POST' });
+      if (!res.ok) setRemoving(false);
+    } catch {
+      setRemoving(false);
     }
   };
 
@@ -176,6 +187,15 @@ export function TableRow({ item, onCancel }: TableRowProps) {
                 <IconX size={14} className={`sm:size-4 ${cancelling ? 'animate-spin' : ''}`} />
               </button>
             )}
+
+            <button
+              onClick={handleRemove}
+              disabled={removing}
+              title='Remove'
+              className='flex h-7 w-7 items-center justify-center rounded-lg border border-slate-500/30 bg-slate-500/15 text-slate-400 transition-colors hover:bg-rose-500/25 hover:border-rose-500/30 hover:text-rose-400 disabled:opacity-40 sm:h-9 sm:w-9'
+            >
+              <IconTrash size={14} className={`sm:size-4 ${removing ? 'animate-pulse' : ''}`} />
+            </button>
           </div>
         </div>
       </div>
