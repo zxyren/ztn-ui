@@ -4,6 +4,13 @@ import { TablePagination } from './TablePagination';
 import type { DownloadItem } from './App';
 import { IconTrash, IconChevronDown } from '@tabler/icons-react';
 import { Button } from '../ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+} from '../ui/dropdown-menu';
 
 interface DownloadTableProps {
   queue: DownloadItem[];
@@ -83,24 +90,30 @@ export function DownloadTable({
         </div>
 
         {/* Mobile Dropdown (visible on tablet/mobile) */}
-        <div className='relative md:hidden'>
-          <select
-            className='w-full appearance-none rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm font-semibold text-white outline-none ring-1 ring-white/5 transition-all focus:border-indigo-500/60 focus:bg-white/5'
-            value={activeTab}
-            onChange={(e) => {
-              setActiveTab(e.target.value as any);
-              setCurrentPage(1);
-            }}
-          >
-            {tabs.map((tab) => (
-              <option key={tab.key} value={tab.key} className='bg-slate-900 text-white'>
-                {tab.label} ({tab.count})
-              </option>
-            ))}
-          </select>
-          <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400'>
-            <IconChevronDown size={18} stroke={1.5} />
-          </div>
+        <div className='md:hidden'>
+          <DropdownMenu>
+            <DropdownMenuTrigger className='flex w-full appearance-none items-center justify-between rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm font-semibold text-white outline-none ring-white/5 transition-all hover:bg-white/5 focus:border-indigo-500/60 focus:bg-white/5'>
+              <span>
+                {activeTabData.label} ({activeTabData.count})
+              </span>
+              <IconChevronDown size={18} stroke={1.5} className='text-slate-400' />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuRadioGroup
+                value={activeTab}
+                onValueChange={(val) => {
+                  setActiveTab(val as any);
+                  setCurrentPage(1);
+                }}
+              >
+                {tabs.map((tab) => (
+                  <DropdownMenuRadioItem key={tab.key} value={tab.key}>
+                    {tab.label} ({tab.count})
+                  </DropdownMenuRadioItem>
+                ))}
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Desktop Tabs (visible on desktop) */}

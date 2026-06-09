@@ -56,7 +56,7 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        'not-data-[variant=destructive]:text-white/60 group/dropdown-menu-item hover:bg-white/8 focus:bg-white/8 relative flex cursor-pointer select-none items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:text-white focus:text-white focus:outline-none focus-visible:outline-none focus-visible:ring-0 data-[disabled]:pointer-events-none data-[inset]:pl-8 data-[variant=destructive]:text-rose-400 data-[disabled]:opacity-40 data-[variant=destructive]:hover:bg-rose-500/15',
+        'not-data-[variant=destructive]:text-white/60 group/dropdown-menu-item hover:bg-white/8 focus:bg-white/8 relative flex cursor-pointer select-none items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm transition-colors hover:text-white focus:text-white focus:outline-none focus-visible:outline-none focus-visible:ring-0 ring-0 data-[disabled]:pointer-events-none data-[inset]:pl-8 data-[variant=destructive]:text-rose-400 data-[disabled]:opacity-40 data-[variant=destructive]:hover:bg-rose-500/15',
         className
       )}
       {...props}
