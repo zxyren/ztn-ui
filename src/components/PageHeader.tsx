@@ -41,17 +41,17 @@ export function PageHeader() {
             <IconInfoOctagon size={23} strokeWidth={1.5} className='text-indigo-400' />
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className='mr-3 w-56 border border-white/10 bg-[#0d0f1a]/90 p-2 backdrop-blur-xl sm:w-80'>
+        <DropdownMenuContent className='mr-3 w-70 border border-white/10 bg-secondary/10 p-2 backdrop-blur-xl sm:w-80'>
           <DropdownMenuLabel className='text-sm font-semibold text-indigo-400'><h1>Supported Platforms</h1></DropdownMenuLabel>
           <DropdownMenuSeparator className='bg-white/10' />
           <div className='grid grid-cols-3 gap-1 p-2 sm:grid-cols-4 sm:gap-2'>
             {supportedPlatforms.map((platform) => (
               <div
                 key={platform.name}
-                className='hover:bg-white/8 flex cursor-pointer flex-col items-center gap-0.5 rounded-lg p-1.5 transition-colors sm:rounded-xl sm:p-2'
+                className='hover:bg-white/8 flex cursor-pointer flex-col items-center gap-1 rounded-lg p-1.5 transition-colors sm:rounded-xl sm:p-2'
               >
                 <Icon name={platform.icon} className='h-4 w-4 sm:h-6 sm:w-6' />
-                <span className='text-xs font-medium text-white/50 sm:text-sm'>{platform.name}</span>
+                <span className='text-xs font-medium text-secondary-foreground sm:text-sm'>{platform.name}</span>
               </div>
             ))}
           </div>
