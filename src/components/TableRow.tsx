@@ -4,7 +4,7 @@ import { StatusBadge } from './StatusBadge';
 import { ProgressBar } from './Progressbar';
 import { useState, useEffect, useRef } from 'react';
 import { getPlatformIcon } from './PlatformIcon';
-import { IconArrowBarToDown, IconPhotoX, IconX, IconTrash } from '@tabler/icons-react';
+import { IconArrowBarToDown, IconPhotoX, IconTrash, IconDownloadOff } from '@tabler/icons-react';
 
 interface TableRowProps {
   item: DownloadItem;
@@ -184,7 +184,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
                 title='Cancel'
                 className='flex h-7 w-7 items-center justify-center rounded-lg border border-rose-500/30 bg-rose-500/15 text-rose-400 transition-colors hover:bg-rose-500/25 disabled:opacity-40 sm:h-9 sm:w-9'
               >
-                <IconX size={14} className={`sm:size-4 ${cancelling ? 'animate-spin' : ''}`} />
+                <IconDownloadOff size={14} className={`sm:size-4 ${cancelling ? 'animate-spin' : ''}`} />
               </button>
             )}
 
