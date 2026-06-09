@@ -1,6 +1,6 @@
 import { Icon } from 'iconza';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
-import { IconInfoOctagon } from '@tabler/icons-react';
+import { IconInfoOctagon, IconDots } from '@tabler/icons-react';
 
 const supportedPlatforms = [
   { name: 'Facebook', icon: 'FacebookSquare' },
@@ -54,6 +54,10 @@ export function PageHeader() {
                 <span className='text-xs font-medium text-secondary-foreground sm:text-sm'>{platform.name}</span>
               </div>
             ))}
+            <div className='hover:bg-white/8 flex cursor-pointer flex-col items-center gap-1 rounded-lg p-1.5 transition-colors sm:rounded-xl sm:p-2'>
+              <IconDots className='h-4 w-4 sm:h-6 sm:w-6' />
+              <span className='text-xs font-medium text-secondary-foreground sm:text-sm'>More...</span>
+            </div>
           </div>
         </DropdownMenuContent>
       </DropdownMenu>
