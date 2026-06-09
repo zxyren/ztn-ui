@@ -5,6 +5,7 @@ import { ProgressBar } from './Progressbar';
 import { useState, useEffect, useRef } from 'react';
 import { getPlatformIcon } from './PlatformIcon';
 import { IconArrowBarToDown, IconPhotoX, IconTrash, IconDownloadOff } from '@tabler/icons-react';
+import { Button } from '../ui/button';
 
 interface TableRowProps {
   item: DownloadItem;
@@ -110,7 +111,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
         : '';
 
   return (
-    <div className='group relative flex items-start border-b border-white/20 p-2 gap-4 sm:p-3 md:items-center'>
+    <div className='group relative flex items-start p-2 gap-4 sm:p-4 md:items-center'>
       {/* Thumbnail */}
       <div className='relative aspect-video h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
         {thumbLoading ? (
@@ -167,35 +168,39 @@ export function TableRow({ item, onCancel }: TableRowProps) {
             <span className='font-semibold tabular-nums text-white/40'>{item.progress?.toFixed(1) ?? '0.0'}%</span>
 
             {isCompleted && (
-              <button
+              <Button
                 onClick={handleDownload}
                 disabled={downloading}
                 title={downloading ? 'Saving…' : `Save ${item.filename ?? 'file'}`}
-                className='flex h-8 w-8 items-center cursor-pointer justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/15 text-emerald-400 transition-colors hover:bg-emerald-500/25 disabled:opacity-40 sm:h-9 sm:w-9'
+                size="iconLg"
+                variant="success"
+                className='rounded-xl border-2 disabled:opacity-40'
               >
                 <IconArrowBarToDown size={16} className={`sm:size-5 ${downloading ? 'animate-bounce' : ''}`} />
-              </button>
+              </Button>
             )}
 
             {canCancel && (
-              <button
+              <Button
                 onClick={handleCancel}
                 disabled={cancelling}
-                title='Cancel'
-                className='flex h-8 w-8 items-center cursor-pointer justify-center rounded-lg border border-rose-500/30 bg-rose-500/15 text-rose-400 transition-colors hover:bg-rose-500/25 disabled:opacity-40 sm:h-9 sm:w-9'
+                size="iconLg"
+                variant="destructive"
+                className='rounded-xl border-2 disabled:opacity-40'
               >
                 <IconDownloadOff size={16} className={`sm:size-5 ${cancelling ? 'animate-spin' : ''}`} />
-              </button>
+              </Button>
             )}
 
-            <button
+            <Button
               onClick={handleRemove}
               disabled={removing}
-              title='Remove'
-              className='flex h-8 w-8 items-center cursor-pointer justify-center rounded-lg border border-slate-500/30 bg-slate-500/15 text-slate-400 transition-colors hover:bg-rose-500/25 hover:border-rose-500/30 hover:text-rose-400 disabled:opacity-40 sm:h-9 sm:w-9'
+              size="iconLg"
+              variant="destructive"
+              className='rounded-xl border-2 disabled:opacity-40'
             >
               <IconTrash size={16} className={`sm:size-5 ${removing ? 'animate-pulse' : ''}`} />
-            </button>
+            </Button>
           </div>
         </div>
       </div>

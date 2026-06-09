@@ -26,8 +26,8 @@ const buttonVariants = cva(
         todo:
           'bg-violet-500/12 text-violet-400 border-violet-500/30 hover:bg-violet-500/22 hover:border-violet-500/50',
 
-        'in-review':
-          'bg-amber-500/10 text-amber-400 border-amber-500/28 hover:bg-amber-500/20 hover:border-amber-500/46',
+        success:
+          'bg-emerald-500/10 text-emerald-400 border-emerald-500/26 hover:bg-emerald-500/20 hover:border-emerald-500/44',
 
         'design-review':
           'bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/26 hover:bg-fuchsia-500/20 hover:border-fuchsia-500/44',
@@ -39,7 +39,9 @@ const buttonVariants = cva(
         default: 'min-h-9 px-5 py-2',
         sm: 'min-h-8 px-4 py-1.5 text-xs rounded-lg',
         lg: 'min-h-11 px-6 py-2.5 text-base rounded-xl',
-        icon: 'h-9 w-9',
+        icon: 'h-9 w-9 aspect-square',
+        iconSm: 'h-8 w-8 aspect-square',
+        iconLg: 'h-10 w-10 aspect-square',
       },
     },
     defaultVariants: {

@@ -1,4 +1,4 @@
-import { IconAlertTriangle, IconBug, IconCheck, IconHourglassEmpty, IconLayersIntersect2, IconLoader2, IconPlayerPauseFilled, IconPlayerPlayFilled, IconRocket, IconTransform } from "@tabler/icons-react";
+import { IconAlertTriangle, IconBug, IconCheck, IconHourglassEmpty, IconLayersIntersect2, IconLoader3, IconPlayerPauseFilled, IconPlayerPlayFilled, IconRocket, IconTransform } from "@tabler/icons-react";
 
 interface StatusBadgeProps {
   status: string;
@@ -12,7 +12,7 @@ export function StatusBadge({ status }: StatusBadgeProps) {
       case 'starting':
         return { cls: 'status-starting', icon: IconRocket };
       case 'downloading':
-        return { cls: 'status-downloading', icon: IconLoader2 };
+        return { cls: 'status-downloading', icon: IconLoader3 };
       case 'merging':
         return { cls: 'status-merging', icon: IconLayersIntersect2 };
       case 'completed':
