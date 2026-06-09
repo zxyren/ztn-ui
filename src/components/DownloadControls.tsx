@@ -113,12 +113,10 @@ export function DownloadControls({
         </div>
       </div>
 
-      {/* Save Folder + Batch Upload */}
       <div className='grid gap-3 border-t border-white/10 pt-4 sm:gap-3 sm:pt-5 lg:grid-cols-2'>
-        {/* Save Location */}
         <div className='space-y-2 rounded-xl border border-white/10 bg-white/5 p-2.5 sm:rounded-2xl sm:p-3'>
           <div>
-            <h1 className='text-xs font-semibold uppercase tracking-wider text-white/40 sm:text-base'>Save Location</h1>
+            <h1 className='text-xs tracking-wider text-foreground sm:text-lg'>Save Location</h1>
             <p className='text-sm text-white/25 sm:text-base'>Choose where completed files are saved.</p>
           </div>
           <div className='flex min-w-0 flex-col gap-2 sm:flex-row sm:gap-2'>
@@ -172,10 +170,9 @@ export function DownloadControls({
           </div>
         </div>
 
-        {/* Batch Upload */}
         <div className='space-y-2 rounded-xl border border-white/10 bg-white/5 p-2.5 sm:space-y-2.5 sm:rounded-2xl sm:p-3'>
           <div>
-            <h1 className='text-xs font-semibold uppercase tracking-wider text-white/40 sm:text-base'>Batch Upload</h1>
+            <h1 className='text-xs tracking-wider text-foreground sm:text-lg'>Batch Upload</h1>
             <p className='text-sm text-white/25 sm:text-base'>
               Drop a <span className='rounded font-mono bg-white/10 px-1 py-0.5 italic text-white/50'>.txt</span> file with many URLs.
             </p>
