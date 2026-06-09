@@ -32,7 +32,7 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 
   const style = getStatusStyle(status);
   const statusLower = status.toLowerCase();
-  const isAnimating = ['downloading', 'converting'].includes(statusLower);
+  const isAnimating = ['downloading', 'queued'].includes(statusLower);
 
   const Icon = style.icon;
 
