@@ -30,7 +30,7 @@ export function PageHeader() {
     <div className='mb-4 flex flex-wrap items-center justify-between gap-2 sm:gap-4'>
       <div className='flex items-center gap-2'>
         <img src='/logo.png' alt='Logo' className='h-9 w-9 sm:h-11 sm:w-11' />
-        <h1 className='text-xl font-medium tracking-tight text-white sm:text-2xl'>ZTN</h1>
+        <h1 className='text-xl font-medium tracking-tight text-white sm:text-2xl'>Download Nexus</h1>
       </div>
 
       <DropdownMenu>
