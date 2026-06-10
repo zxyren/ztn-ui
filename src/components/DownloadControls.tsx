@@ -1,6 +1,6 @@
 import { type RefObject } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { IconClipboardPlus, IconFolder, IconFolderFilled, IconMusic, IconPhoto, IconPlayerPlay, IconTrash, IconUpload } from '@tabler/icons-react';
+import { IconClipboardPlus, IconFolder, IconFolderFilled, IconMusic, IconPhoto, IconPlayerPlay, IconTrash, IconFileText } from '@tabler/icons-react';
 import { Button } from '../ui/button';
 
 interface DownloadControlsProps {
@@ -113,97 +113,65 @@ export function DownloadControls({
         </div>
       </div>
 
-      <div className='grid gap-3 border-t border-white/10 pt-4 sm:gap-3 sm:pt-5 lg:grid-cols-2'>
-        <div className='space-y-2 rounded-xl border border-white/10 bg-white/5 p-2.5 sm:rounded-2xl sm:p-3'>
-          <div>
-            <h1 className='text-xs tracking-wider text-foreground sm:text-lg'>Save Location</h1>
-            <p className='text-sm text-white/25 sm:text-base'>Choose where completed files are saved.</p>
-          </div>
-          <div className='flex min-w-0 flex-col gap-2 sm:flex-row sm:gap-2'>
-            <motion.button
-              layout
-              type='button'
-              onClick={handleSelectDirectory}
-              className='flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 text-xs text-white/50 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white sm:min-h-11 sm:rounded-xl sm:px-4 sm:text-sm'
-            >
-              <AnimatePresence mode='popLayout'>
-                {selectedDirectory ? (
-                  <motion.span
-                    key='sel'
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    className='flex min-w-0 items-center truncate'
-                  >
-                    <IconFolderFilled size={16} className='mr-1.5 text-indigo-400 sm:size-6' />
-                    <span className='truncate text-white'>{selectedDirectory.name}</span>
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key='def'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className='flex items-center gap-1.5 font-medium'
-                  >
-                    <IconFolder size={16} className='sm:size-6' />
-                    <h1 className='text-sm text-white/60 sm:text-base'>
-                      <span className='hidden sm:inline'>Choose</span> Folder
-                    </h1>
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.button>
-
-            <AnimatePresence>
-              {selectedDirectory && (
-                <Button
-                  variant='destructive'
-                  onClick={() => setSelectedDirectory(null)}
-                  className='border-2'
+      <div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-t border-white/10 pt-4 sm:pt-5'>
+        <div className='flex items-center gap-2'>
+          <button
+            type='button'
+            onClick={handleSelectDirectory}
+            className='flex h-11 flex-1 items-center cursor-pointer justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:flex-none'
+          >
+            <AnimatePresence mode='popLayout'>
+              {selectedDirectory ? (
+                <motion.div
+                  key='sel'
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  className='flex items-center gap-1.5'
                 >
-                  <IconTrash size={16} className='sm:size-5' />
-                  <span className='hidden text-base sm:inline'>Clear</span>
-                </Button>
+                  <IconFolderFilled size={18} className='text-indigo-400' />
+                  <span className='truncate max-w-[150px] sm:max-w-[200px] text-white'>
+                    {selectedDirectory.name}
+                  </span>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key='def'
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className='flex items-center gap-1.5'
+                >
+                  <IconFolder size={18} />
+                  <span>Set Save Location</span>
+                </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </button>
+          
+          <AnimatePresence>
+            {selectedDirectory && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                onClick={() => setSelectedDirectory(null)}
+                className='flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 transition-colors hover:bg-red-500/20'
+              >
+                <IconTrash size={18} />
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className='space-y-2 rounded-xl border border-white/10 bg-white/5 p-2.5 sm:space-y-2.5 sm:rounded-2xl sm:p-3'>
-          <div>
-            <h1 className='text-xs tracking-wider text-foreground sm:text-lg'>Batch Upload</h1>
-            <p className='text-sm text-white/25 sm:text-base'>
-              Drop a <span className='rounded font-mono bg-white/10 px-1 py-0.5 italic text-white/50'>.txt</span> file with many URLs.
-            </p>
-          </div>
+        <div className='flex items-center'>
           <input ref={fileInputRef} type='file' accept='.txt' className='hidden' id='batch-file' onChange={uploadList} />
           <label
             htmlFor='batch-file'
-            onDragOver={(e) => {
-              e.preventDefault();
-              e.currentTarget.classList.add('border-indigo-500/40', 'bg-indigo-500/10');
-            }}
-            onDragLeave={(e) => {
-              e.currentTarget.classList.remove('border-indigo-500/40', 'bg-indigo-500/10');
-            }}
-            onDrop={(e) => {
-              e.preventDefault();
-              e.currentTarget.classList.remove('border-indigo-500/40', 'bg-indigo-500/10');
-              if (fileInputRef.current && e.dataTransfer.files.length > 0) {
-                fileInputRef.current.files = e.dataTransfer.files;
-                fileInputRef.current.dispatchEvent(new Event('change', { bubbles: true }));
-              }
-            }}
-            className='flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-white/15 p-4 text-center transition-all hover:border-indigo-400/50 sm:rounded-2xl sm:p-6'
+            className='flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:w-auto'
           >
-            <div className='flex items-center justify-center rounded-full bg-indigo-400/10 p-4 transition-all duration-300'>
-              <IconUpload size={28} className='text-indigo-400' />
-            </div>
-            <div>
-              <h1 className='text-sm font-medium text-white/60 sm:text-base'>Drop your file here, or <span className='text-indigo-400'>browse</span></h1>
-              <p className='text-sm font-light text-white/50'>or click to browse</p>
-            </div>
+            <IconFileText size={18} />
+            <span>Batch Upload (.txt)</span>
           </label>
         </div>
       </div>
