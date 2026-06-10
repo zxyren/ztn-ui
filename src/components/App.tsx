@@ -33,6 +33,7 @@ export interface DownloadItem {
   filepath?: string;
   format?: string;
   image_count?: number;
+  metadata?: string;
 }
 
 export interface StatsData {

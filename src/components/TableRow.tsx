@@ -193,9 +193,15 @@ export function TableRow({ item, onCancel }: TableRowProps) {
           )}
         </div>
 
-        <div className='mb-1.5 sm:mb-2'>
-          <ProgressBar progress={item.progress ?? 0} />
-        </div>
+        {isCompleted && item.metadata ? (
+          <div className='mb-1.5 text-xs text-white/50 font-medium sm:mb-2 sm:text-sm'>
+            {item.metadata}
+          </div>
+        ) : (
+          <div className='mb-1.5 sm:mb-2'>
+            <ProgressBar progress={item.progress ?? 0} />
+          </div>
+        )}
 
         <div className='flex w-full flex-wrap items-center justify-between gap-1 text-xs sm:gap-2'>
           <div className='flex items-center gap-1 sm:gap-2'>
@@ -204,7 +210,7 @@ export function TableRow({ item, onCancel }: TableRowProps) {
           </div>
 
           <div className='ml-auto flex items-center gap-1 sm:gap-2'>
-            <span className='font-semibold tabular-nums text-white/40'>{item.progress?.toFixed(1) ?? '0.0'}%</span>
+            {!isCompleted && <span className='font-semibold tabular-nums text-white/40'>{item.progress?.toFixed(1) ?? '0.0'}%</span>}
 
             {isCompleted && (
               <Button
