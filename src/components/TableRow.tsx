@@ -41,9 +41,9 @@ interface TableRowProps {
 }
 
 const FORMAT_BADGE: Record<string, { label: string; cls: string }> = {
-  audio: { label: 'MP3', cls: 'bg-indigo-500/15 text-indigo-400 border-indigo-500/30' },
-  image: { label: 'IMG', cls: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' },
-  video: { label: 'MP4', cls: 'bg-sky-500/15 text-sky-400 border-sky-500/30' },
+  audio: { label: 'MP3', cls: 'text-white' },
+  image: { label: 'IMG', cls: 'text-emerald-400' },
+  video: { label: 'MP4', cls: 'text-sky-400' },
 };
 
 export function TableRow({ item, onCancel }: TableRowProps) {
@@ -146,9 +146,9 @@ export function TableRow({ item, onCancel }: TableRowProps) {
         : '';
 
   return (
-    <div className='group relative flex items-start p-2 gap-4 sm:p-4 md:items-center'>
+    <div className='group relative flex items-center p-2 gap-3 sm:gap-4 sm:p-4'>
       {/* Thumbnail */}
-      <div className='relative aspect-video h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
+      <div className='shrink-0 relative aspect-video h-16 w-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-20 sm:w-32 md:h-24 md:w-40'>
         {thumbLoading ? (
           <div className='flex h-full w-full items-center justify-center'>
             <div className='h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-indigo-400 sm:h-8 sm:w-8' />
@@ -171,83 +171,84 @@ export function TableRow({ item, onCancel }: TableRowProps) {
             <IconUnlink size={16} className='text-white/60 drop-shadow-md' />
           )}
         </div>
+        <span className={`absolute right-1 bottom-1 sm:right-1.5 sm:bottom-1.5 rounded-md border border-white/20 bg-black/70 px-1.5 py-0.5 text-[9px] font-bold shadow-sm backdrop-blur-md sm:text-[10px] ${badge.cls}`}>
+          {badge.label}
+        </span>
       </div>
 
       {/* Content */}
       <div className='min-w-0 flex-1'>
-        <div className='mb-2 flex flex-wrap items-start gap-1 sm:mb-3 sm:gap-2'>
+        <div className='mb-1 flex flex-wrap items-center gap-1.5 sm:mb-2 sm:gap-2'>
           <a
             href={item.url}
             target='_blank'
             rel='noopener noreferrer'
             title={title || undefined}
-            className='truncate block min-w-24 flex-1 text-xs font-semibold text-white/75 hover:text-indigo-400 hover:underline sm:text-sm'
+            className='truncate flex-1 text-xs font-semibold text-white/80 hover:text-indigo-400 hover:underline sm:text-sm'
           >
             {title || item.url}
           </a>
-          <span className={`shrink-0 rounded-lg border px-1.5 py-0.5 text-[9px] font-bold sm:text-[10px] ${badge.cls}`}>{badge.label}</span>
-          {item.image_count && item.image_count > 1 && (
-            <span className='shrink-0 rounded-lg border border-white/10 bg-white/5 px-1.5 py-0.5 text-[9px] font-bold text-white/40 sm:text-[10px]'>
-              {item.image_count} files → ZIP
-            </span>
-          )}
+          <div className='shrink-0 flex items-center gap-1 sm:gap-2'>
+            <StatusBadge status={item.status} />
+            {item.image_count && item.image_count > 1 && (
+              <span className='rounded-lg border border-white/10 bg-white/5 px-1.5 py-0.5 text-[9px] font-bold text-white/40 sm:text-[10px]'>
+                {item.image_count} files → ZIP
+              </span>
+            )}
+          </div>
         </div>
 
         {isCompleted && item.metadata ? (
-          <div className='mb-1.5 text-xs text-white/50 font-medium sm:mb-2 sm:text-sm'>
+          <div className='text-xs text-white/50 font-medium sm:text-sm'>
             {item.metadata}
           </div>
         ) : (
-          <div className='mb-1.5 sm:mb-2'>
+          <div className='flex flex-col gap-1 w-full'>
             <ProgressBar progress={item.progress ?? 0} />
+            <div className='flex items-center justify-between gap-2 text-[10px] text-white/40 sm:text-xs'>
+              {speedLabel && <span>{speedLabel}</span>}
+              <span className='font-semibold tabular-nums ml-auto'>{item.progress?.toFixed(1) ?? '0.0'}%</span>
+            </div>
           </div>
         )}
+      </div>
 
-        <div className='flex w-full flex-wrap items-center justify-between gap-1 text-xs sm:gap-2'>
-          <div className='flex items-center gap-1 sm:gap-2'>
-            <StatusBadge status={item.status} />
-            {speedLabel && <span className='hidden text-white/30 sm:inline'>{speedLabel}</span>}
-          </div>
+      {/* Action Buttons */}
+      <div className='shrink-0 flex items-center gap-1 sm:gap-2 ml-2 sm:ml-4'>
+        {isCompleted && (
+          <Button
+            onClick={handleDownload}
+            disabled={downloading}
+            title={downloading ? 'Saving…' : `Save ${item.filename ?? 'file'}`}
+            size="iconSm"
+            variant="success"
+            className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
+          >
+            <IconDownload size={16} className={`sm:size-5 ${downloading ? 'animate-bounce' : ''}`} />
+          </Button>
+        )}
 
-          <div className='ml-auto flex items-center gap-1 sm:gap-2'>
-            {!isCompleted && <span className='font-semibold tabular-nums text-white/40'>{item.progress?.toFixed(1) ?? '0.0'}%</span>}
+        {canCancel && (
+          <Button
+            onClick={handleCancel}
+            disabled={cancelling}
+            size="iconSm"
+            variant="destructive"
+            className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
+          >
+            <IconDownloadOff size={16} className={`sm:size-5 ${cancelling ? 'animate-spin' : ''}`} />
+          </Button>
+        )}
 
-            {isCompleted && (
-              <Button
-                onClick={handleDownload}
-                disabled={downloading}
-                title={downloading ? 'Saving…' : `Save ${item.filename ?? 'file'}`}
-                size="iconSm"
-                variant="success"
-                className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
-              >
-                <IconDownload size={16} className={`sm:size-5 ${downloading ? 'animate-bounce' : ''}`} />
-              </Button>
-            )}
-
-            {canCancel && (
-              <Button
-                onClick={handleCancel}
-                disabled={cancelling}
-                size="iconSm"
-                variant="destructive"
-                className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
-              >
-                <IconDownloadOff size={16} className={`sm:size-5 ${cancelling ? 'animate-spin' : ''}`} />
-              </Button>
-            )}
-
-            <Button
-              onClick={handleRemove}
-              disabled={removing}
-              size="iconSm"
-              variant="destructive"
-              className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
-            >
-              <IconTrash size={16} className={`sm:size-5 ${removing ? 'animate-pulse' : ''}`} />
-            </Button>
-          </div>
-        </div>
+        <Button
+          onClick={handleRemove}
+          disabled={removing}
+          size="iconSm"
+          variant="destructive"
+          className='rounded-xl border disabled:opacity-40 sm:h-10 sm:w-10'
+        >
+          <IconTrash size={16} className={`sm:size-5 ${removing ? 'animate-pulse' : ''}`} />
+        </Button>
       </div>
     </div>
   );
