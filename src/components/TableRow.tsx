@@ -1,22 +1,15 @@
-import { Icon } from 'iconza';
 import { apiFetch, API_BASE_URL, SESSION_ID, type DownloadItem } from './App';
 import { StatusBadge } from './StatusBadge';
 import { ProgressBar } from './Progressbar';
 import { useState, useEffect } from 'react';
-import { getPlatformIcon } from './PlatformIcon';
-import { IconDownload, IconPhotoX, IconTrash, IconDownloadOff } from '@tabler/icons-react';
+import { IconDownload, IconPhotoX, IconTrash, IconDownloadOff, IconUnlink } from '@tabler/icons-react';
 import { Button } from '../ui/button';
 
-// ── Module-level thumbnail cache (shared across all TableRow instances) ────
 const thumbCache = new Map<string, { thumbnail: string; title: string }>();
 const pendingRequests = new Map<string, Promise<{ thumbnail: string; title: string } | null>>();
 
-// ── Deduplicated API fetch with shared promise ────────────────────────────
 async function fetchThumbnail(url: string): Promise<{ thumbnail: string; title: string } | null> {
-  // Check cache first
   if (thumbCache.has(url)) return thumbCache.get(url)!;
-
-  // Deduplicate in-flight requests for the same URL
   if (pendingRequests.has(url)) return pendingRequests.get(url)!;
 
   const promise = (async () => {
@@ -32,7 +25,7 @@ async function fetchThumbnail(url: string): Promise<{ thumbnail: string; title: 
         thumbCache.set(url, result);
         return result;
       }
-    } catch { /* silent */ }
+    } catch { }
     return null;
   })();
 
@@ -138,8 +131,12 @@ export function TableRow({ item, onCancel }: TableRowProps) {
 
   const isCompleted = item.status === 'Completed';
   const canCancel = ['Queued', 'Starting', 'Downloading', 'Converting', 'Merging'].includes(item.status) && !cancelling;
-  const platformIcon = getPlatformIcon(item.url);
-  const PlatformIcon = platformIcon.type !== 'iconza' ? platformIcon.icon : null;
+
+  let domain = '';
+  try {
+    domain = new URL(item.url).hostname;
+  } catch (e) { }
+
   const badge = FORMAT_BADGE[item.format ?? 'video'] ?? FORMAT_BADGE.video;
   const speedLabel =
     item.status === 'Downloading'
@@ -163,11 +160,15 @@ export function TableRow({ item, onCancel }: TableRowProps) {
         ) : (
           <img src={thumbnail} alt='Thumbnail' className='h-full w-full object-cover' onError={() => setThumbError(true)} />
         )}
-        <div className='absolute left-1 top-1 sm:left-1.5 sm:top-1.5'>
-          {platformIcon.type === 'iconza' ? (
-            <Icon name={platformIcon.name} size={23} className='drop-shadow-lg' />
+        <div className='absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-md bg-white/10 backdrop-blur-md shadow-sm border border-white/20 sm:left-1.5 sm:top-1.5 sm:h-7 sm:w-7'>
+          {domain ? (
+            <img
+              src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+              alt={domain}
+              className='h-full w-full object-contain drop-shadow-md'
+            />
           ) : (
-            PlatformIcon && <PlatformIcon size={16} className='text-sky-400' />
+            <IconUnlink size={16} className='text-white/60 drop-shadow-md' />
           )}
         </div>
       </div>
