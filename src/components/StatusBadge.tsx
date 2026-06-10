@@ -52,9 +52,9 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center gap-0.5 rounded-full border px-2 py-1 text-xs font-medium sm:gap-1 sm:px-3 sm:py-1.5 ${style.cls} ${style.cls} ${style.cls}`}
+      className={`inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[10px] font-medium sm:gap-1 sm:px-2.5 sm:py-1 sm:text-xs ${style.cls}`}
     >
-      {isAnimating ? <Icon size={14} className={`animate-spin sm:size-4`} /> : <Icon size={14} className='sm:size-4' />}
+      {isAnimating ? <Icon size={12} className={`animate-spin sm:size-3.5`} /> : <Icon size={12} className='sm:size-3.5' />}
       {label}
     </span>
   );

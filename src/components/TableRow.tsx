@@ -1,7 +1,7 @@
 import { apiFetch, API_BASE_URL, SESSION_ID, type DownloadItem } from './App';
 import { StatusBadge } from './StatusBadge';
 import { ProgressBar } from './Progressbar';
-import { useState, useEffect, type ComponentType } from 'react';
+import { useState, useEffect } from 'react';
 import { IconDownload, IconTrash, IconDownloadOff, IconUnlink, IconPlayerPlay, IconMusic, IconPhoto } from '@tabler/icons-react';
 import { Button } from '../ui/button';
 
@@ -172,14 +172,14 @@ export function TableRow({ item, onCancel }: TableRowProps) {
             <IconUnlink size={16} className='text-white/60 drop-shadow-md' />
           )}
         </div>
-        <span className={`absolute right-1 bottom-1 sm:right-1.5 sm:bottom-1.5 inline-flex items-center justify-center rounded-sm bg-black p-1 text-white/90 ${badge.cls}`}>
+        <span className={`absolute right-1 bottom-1 sm:right-1.5 sm:bottom-1.5 inline-flex items-center justify-center rounded-md bg-black p-1 text-white/90 ${badge.cls}`}>
           <BadgeIcon size={16} stroke={2} className={badge.cls} />
         </span>
       </div>
 
       {/* Content */}
       <div className='min-w-0 flex-1'>
-        <div className='mb-1 flex flex-wrap items-center gap-1.5 sm:mb-2 sm:gap-2'>
+        <div className='mb-1 flex items-center gap-1.5 sm:mb-2 sm:gap-2'>
           <a
             href={item.url}
             target='_blank'
