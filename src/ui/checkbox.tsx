@@ -21,7 +21,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
           checked={checked}
           onChange={handleChange}
-          className="peer h-5 w-5 appearance-none rounded-md border border-white/20 bg-white/5 outline-none transition-all checked:border-indigo-500 checked:bg-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-500/50 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+          className="peer h-5 w-5 appearance-none rounded-md border border-white/20 bg-white/5 outline-none transition-all checked:border-primary checked:bg-primary focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
           {...props}
         />
         <IconCheck

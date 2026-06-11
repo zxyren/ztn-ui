@@ -149,7 +149,7 @@ export function DownloadControls({
                     exit={{ opacity: 0, y: -4 }}
                     className='flex items-center gap-1.5'
                   >
-                    <IconFolderFilled size={18} className='text-indigo-400' />
+                    <IconFolderFilled size={18} className='text-primary' />
                     <span className='truncate max-w-36 sm:max-w-52 text-white'>
                       {selectedDirectory.name}
                     </span>

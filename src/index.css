@@ -88,29 +88,6 @@
   --muted: #64748b;
 }
 
-/* Dark theme */
-.dark {
-  --primary: #60a5fa;
-  --secondary: #94a3b8;
-  --accent: #fbbf24;
-  --destructive: #f87171;
-
-  --primary-foreground: #0f172a;
-  --secondary-foreground: #f8fafc;
-  --destructive-foreground: #ffffff;
-
-  --success: #4ade80;
-  --warning: #fbbf24;
-  --danger: #f87171;
-  --info: #22d3ee;
-
-  --background: #0f172a;
-  --surface: #1e293b;
-  --border: #334155;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-}
-
 .text-xxs {
   font-size: 0.625rem;
   line-height: 0.75rem;
