@@ -8,7 +8,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className = '', onCheckedChange, checked, onChange, ...props }, ref) => {
-    
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange?.(e);
       onCheckedChange?.(e.target.checked);
@@ -21,7 +21,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
           checked={checked}
           onChange={handleChange}
-          className="peer h-5 w-5 appearance-none rounded-md border border-white/20 bg-white/5 outline-none transition-all checked:border-indigo-500 checked:bg-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-500/50 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 hover:bg-white/10"
+          className="peer h-5 w-5 appearance-none rounded-md border border-white/20 bg-white/5 outline-none transition-all checked:border-indigo-500 checked:bg-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-500/50 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
           {...props}
         />
         <IconCheck

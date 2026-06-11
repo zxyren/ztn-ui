@@ -151,6 +151,9 @@ export function TableRow({ item, onCancel }: TableRowProps) {
   let domain = '';
   try {
     domain = new URL(item.url).hostname;
+    if (domain.endsWith('.tiktok.com')) {
+      domain = 'tiktok.com';
+    }
   } catch (e) { }
 
   const badge = FORMAT_BADGE[item.format ?? 'video'] ?? FORMAT_BADGE.video;
