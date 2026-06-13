@@ -1,4 +1,4 @@
-import { Icon } from 'iconza';
+import { Icon } from '@iconode/react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { IconAlertCircleFilled, IconDots } from '@tabler/icons-react';
 
